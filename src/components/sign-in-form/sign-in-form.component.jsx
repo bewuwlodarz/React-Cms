@@ -1,7 +1,6 @@
 import Button from "../button/button.component";
 import { useState } from "react";
 import {
-  createAuthUserWithEmailAndPassword,
   createUserDocumentFormAuth,
   signInWithGooglePopUp,
   signInUserWithEmailAndPassword,
@@ -18,13 +17,11 @@ const defaultFormFields = {
 const SignInForm = () => {
   const [formFields, setFormFileds] = useState(defaultFormFields);
   const { email, password } = formFields;
-
   const resetFormFileds = () => {
     setFormFileds(defaultFormFields);
   };
   const signInWithGoogle = async () => {
-    const { user } = await signInWithGooglePopUp();
-    await createUserDocumentFormAuth(user);
+    await signInWithGooglePopUp();
   };
 
   const handleChange = (event) => {
